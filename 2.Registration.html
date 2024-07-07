@@ -1,0 +1,203 @@
+<html>
+<head>
+
+<title>Registration_page</title>
+<link href="bootstrap.min.css" rel="stylesheet"></link>
+<script type="text/javascript" src="jquery.min.js"></script>
+
+<style>
+.header
+{
+background-image:url(' ');
+background-repeat:no-repeat;
+background-size:cover;
+background-color:green;
+}
+
+.footer
+{
+background:black;
+color:white;
+padding:5px;
+}
+
+.brijesh
+{
+padding:30px;
+width:100%;
+color:black;
+}
+.container-fluid
+{
+background-image:url('');
+background-repeat:no-repeat;
+background-size:cover;
+}
+
+.navbar
+{
+width:100%;
+background-color:grey;
+overflow:auto;
+}
+.navbar a 
+{
+color:white;
+font-size:20px;
+padding:20px;
+float:left;
+}
+.navbar a:hover
+{
+background-color:red;
+}
+.active
+{
+background:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar"> 
+<a  href="index.html">HOME </a>
+<a class="active" href="#">REGISTRATION </a>
+<a href="3.Login.html">LOGIN </a>
+<a href="4.Blog.html">BLOG </a>
+<a href="5.About.html">ABOUT</a>
+</div>
+
+<div class="jumbotron header text-center">
+<h1 style="color:black; text-align:center; ">World Of Cinema</h1>
+</div>
+
+
+<div class="container-fluid brijesh">
+<form id="myForm">
+<h1 style="color:black; font-style:bold; text-align:center">Registration </h1>
+<div class="form-horizontal">
+<div class="form-group">
+<label for="name" class="control-label col-sm-2">First name:</label>
+<div class="col-sm-10">
+<input type="text" class="form-control" id="n1" placeholder="Brijesh">
+</div>
+</div>
+
+<div class="form-group">
+<label for="name" class="control-label col-sm-2">Last name:</label>
+<div class="col-sm-10">
+<input type="text" class="form-control" id="n2" placeholder="Ojha">
+</div>
+</div>
+
+<div class="form-group">
+<label for="DOB" class="control-label col-sm-2">Date Of Birth:</label>
+<div class="col-sm-10">
+<input type="date" class="form-control" id="date">
+</div>
+</div>
+
+<div class="form-group">
+<label for="password" class="control-label col-sm-2">Password:</label>
+<div class="col-sm-10">
+<input type="Password" class="form-control" id="password" placeholder="Pwd">
+</div>
+</div>
+
+<div class="form-group">
+<label for="address" class="control-label col-sm-2">Address:</label>
+<div class="col-sm-10">
+<textarea type="address" class="form-control" rows="5" cols="20"></textarea>
+</div>
+</div>
+
+<div class="form-group">
+<label for="Course" class="control-label col-sm-2">Course:</label>
+<div class="col-sm-10">
+<input type="radio"  name="rbtncourse" value="BBA"> BBA
+<input type="radio"  name="rbtncourse" value="BCA"> BCA
+<input type="radio"  name="rbtncourse" value="Bcom"> Bcom
+<input type="radio" name="rbtncourse" value="Btech"> Btech
+</div>
+</div>
+
+<div class="form-group">
+<label for="Mobile_no" class="control-label col-sm-2">Mobile no:</label>
+<div class="col-sm-10">
+<input type="text"  id="n3" placeholder="+91....XXX" style="color:red;">
+</div>
+</div>
+
+<div class="form-group">
+<label for="city" class="control-label col-sm-2">City:</label>
+<div class="col-sm-10">
+<select name="city" style="color:blue;">
+<option value="select-city">Select-City</option>
+<option value="Aarah">Aarah</option>
+<option value="Surat">Surat</option>
+<option value="Patna">Patna</option>
+</select>
+</div>
+</div>
+
+<div class="col-sm-12 text-center">
+<button  type="confirm" class="btn btn-success" id="btn_submit">Confirm</button>
+<button  type="reset" class="btn btn-danger" >Reset</button>
+</div>
+</div>
+</form>
+</div>
+
+
+<div class="footer">
+<p style="font-size:15px;">
+<marquee direction="left">Created By Brijesh Ojha</marquee>
+</p>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#btn_submit').click(function(e){
+        e.preventDefault();
+        // Clear the previous errors
+        $(".error").remove();
+        
+        var isValid = true;
+        
+        // Validation for first name
+        if ($('#n1').val().trim() === '') {
+            $('#n1').after('<span class="error">Please enter your first name</span>');
+            isValid = false;
+        }
+        
+        // Validation for last name
+        if ($('#n2').val().trim() === '') {
+            $('#n2').after('<span class="error">Please enter your last name</span>');
+            isValid = false;
+        }
+        
+        // Validation for mobile number
+        var mobnum = $('#n3').val().trim();
+        if (mobnum === '') {
+            $('#n3').after('<span class="error">Please enter your mobile number</span>');
+            isValid = false;
+        } else {
+            var mobnumPattern = /^\d{10}$/;
+            if (!mobnumPattern.test(mobnum)) {
+                $('#n3').after('<span class="error">Please enter a 10 digit mobile number</span>');
+                isValid = false;
+            }
+        }
+        
+        // If all validations pass, submit the form
+        if (isValid) {
+            $('#myForm').submit();
+        }
+    });
+});
+</script>
+
+</body>
+
+</html>
